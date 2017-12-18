@@ -1,9 +1,9 @@
 inc
-movel
+movl
 inc
 dec
 print
 get
 begin
-mover
+movr
 end
