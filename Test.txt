@@ -1,4 +1,9 @@
 inc
+movel
 inc
 dec
 print
+get
+begin
+mover
+end
