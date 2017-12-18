@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct T {
+typedef struct Tur {
 	int c;
 	int maxC;
 	int* line;
