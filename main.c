@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Tur {
+typedef struct Tur {//add structure for convenience
 	int c;
 	int maxC;
 	int* line;
@@ -10,13 +10,13 @@ typedef struct Tur {
 
 int tFunction(Cell* cell,char* state) {
 
-		if(!strcmp(state,"movl")) {
-			if(cell->c > 0)
+		if(!strcmp(state,"movl")) {//movl algorithm
+			if(cell->c > 0)//Address to a member of the structure Cell
 				cell->c--;
 			else
 				return 2;
 		}
-		if(!strcmp(state,"movr")) {
+		if(!strcmp(state,"movr")) {//movr agorithm
 			if(cell->c >= cell->maxC) {
 				cell->maxC++;
 				cell->line = realloc(cell->line,cell->maxC);
@@ -25,7 +25,7 @@ int tFunction(Cell* cell,char* state) {
 			cell->c++;
 
 		}
-		if(!strcmp(state,"inc")) {
+		if(!strcmp(state,"inc")) {//inc algorithm
 			if(cell->line[cell->c] == 255) {
 				cell->line[cell->c] = 0;
 				return 1;
@@ -70,17 +70,16 @@ int mainTFunc(Cell* cell, FILE* fp)
 
 	while (fscanf(fp,"%s",state) != EOF)
 	{
-		char spam[255];
+		char spam[255];//char variable to using in fgets
 		if(state[0] == '*')
 		{
-			fgets(spam,255,fp);
+			fgets(spam,255,fp);//reading a string
 		}
 		outError = tFunction(cell,state);
 
-		if(!strcmp(state,"begin"))
-		{
+		if(!strcmp(state,"begin"))//command condition for begin and end
 			loop_start = ftell(fp);
-			while(fscanf(fp,"%s",state) != EOF && outError != 2)
+			while(fscanf(fp,"%s",state) != EOF && outError != 2)//return number of successfully transformed fields
 			{
 				if(!strcmp(state,"end") && cell->line[cell->c] == 0)
 					break;
@@ -114,7 +113,7 @@ int mainTFunc(Cell* cell, FILE* fp)
 }
 
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv) {//output function
 
 	Cell out_Alphabet = {.c = 0, .maxC = 254, .line = (int*)malloc(255*sizeof(int))};
 	int lineError;
