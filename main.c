@@ -120,7 +120,7 @@ int main(int argc, char** argv) {
     for(i = 0; i < 255; i++) {
         out_Alphabet.line[i] = 0;
     }
-    if(argv ==NULL) {
+    if(argv !=NULL) {
         FILE *in_Alphabet = fopen(argv[1], "r");
         lentaError = mainTFunc(&out_Alphabet, in_Alphabet);
     }
