@@ -115,19 +115,19 @@ return 0;
 int main(int argc, char** argv) {
 
     Cell out_Alphabet = {.c = 0, .maxC = 254, .line = (int*)malloc(255*sizeof(int))};
-    int lentaError;
+    int lineError;
     int i;
     for(i = 0; i < 255; i++) {
         out_Alphabet.line[i] = 0;
     }
-    if(argv !=NULL) {
+    if(argc[1] !=NULL) {
         FILE *in_Alphabet = fopen(argv[1], "r");
-        lentaError = mainTFunc(&out_Alphabet, in_Alphabet);
+        lineError = mainTFunc(&out_Alphabet, in_Alphabet);
     }
         else{
         printf("no arguments");
     }
-    if(lentaError == 1) {
+    if(lineError == 1) {
         printf("Uncorrect action with tape");
         return 1;
     }
