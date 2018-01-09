@@ -113,7 +113,7 @@ return 0;
 }
 
 
-int main(int argc, char** argv) {/*output function*/
+int main(int argc, char** argv) {
 
     Cell out_Alphabet = {.c = 0, .maxC = 254, .line = (int*)malloc(255*sizeof(int))};
     int lineError;
@@ -121,10 +121,9 @@ int main(int argc, char** argv) {/*output function*/
     for(i = 0; i < 255; i++) {
         out_Alphabet.line[i] = 0;
     }
-    FILE *Erras = fopen(argv[1], "r");
-    char a[102];
-    fgets(a,100,Erras);
-    lineError = mainTFunc(&out_Alphabet,Erras);
+
+    FILE *in_Alphabet = fopen(argv[1], "r");
+    lineError = mainTFunc(&out_Alphabet,in_Alphabet);
 
     if(lineError == 1) {
         printf("Uncorrect action with tape");
