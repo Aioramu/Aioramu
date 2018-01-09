@@ -120,13 +120,9 @@ int main(int argc, char** argv) {
     for(i = 0; i < 255; i++) {
         out_Alphabet.line[i] = 0;
     }
-    if(argc[1] !=NULL) {
         FILE *in_Alphabet = fopen(argv[1], "r");
         lineError = mainTFunc(&out_Alphabet, in_Alphabet);
-    }
-        else{
-        printf("no arguments");
-    }
+    
     if(lineError == 1) {
         printf("Uncorrect action with tape");
         return 1;
